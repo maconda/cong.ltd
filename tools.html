@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>小工具｜Cong.ltd</title>
+  <meta name="description" content="Cong.ltd 工作室的小工具：二维码转换、财务速算、金额大小写转换和报价记录。" />
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <nav class="nav" aria-label="主导航">
+    <div class="nav-inner">
+      <a class="brand" href="index.html#top" aria-label="Cong.ltd 首页"><span class="brand-mark" aria-hidden="true"></span><span>Cong.ltd</span></a>
+      <div class="nav-links" aria-label="页面导航">
+        <a href="index.html#top">入口</a>
+        <a href="tools.html" aria-current="page">工具</a>
+        <a href="preowned.html">闲置</a>
+        <a href="index.html#contact">联系</a>
+      </div>
+      <a class="nav-cta" href="index.html#contact">联系工作室</a>
+      <button class="menu-btn" type="button" aria-label="打开菜单" aria-expanded="false">☰</button>
+    </div>
+  </nav>
+  <div class="mobile-menu" aria-label="移动端菜单">
+    <a href="index.html#top">入口</a>
+    <a href="tools.html">工具</a>
+    <a href="preowned.html">闲置</a>
+    <a href="index.html#contact">联系</a>
+  </div>
+
+  <main id="main">
+    <section class="section shelf-section page-hero">
+      <div class="wrap">
+        <div class="section-head left reveal">
+          <p class="eyebrow dark-text">Studio tools</p>
+          <h1>小工具。</h1>
+          <p class="lead">把常用的小功能单独放在这里，首页保持清爽，需要用的时候从导航进入。</p>
+        </div>
+        <div class="tool-grid compact">
+          <article class="tool-card qr-tool reveal">
+            <div class="tool-index">01</div>
+            <div>
+              <h3>二维码转换</h3>
+              <p>输入任意文字、链接或联系方式，生成一张可下载的二维码图片。</p>
+            </div>
+            <div class="qr-app" aria-label="二维码转换工具">
+              <label class="qr-label" for="qr-input">转换内容</label>
+              <textarea id="qr-input" rows="4" placeholder="粘贴链接、文字、邮箱或其他内容"></textarea>
+              <div class="qr-actions">
+                <button class="btn" type="button" id="qr-generate">生成二维码</button>
+                <a class="btn secondary disabled" id="qr-download" href="#" download="cong-qrcode.png" aria-disabled="true">下载图片</a>
+              </div>
+              <div class="qr-output" id="qr-output" aria-live="polite">
+                <span>等待输入内容</span>
+              </div>
+            </div>
+          </article>
+          <article class="tool-card finance-tool reveal">
+            <div class="tool-index">02</div>
+            <div>
+              <h3>财务速算</h3>
+              <p>金额大小写转换，快速记录报价、折扣、税费和预算区间。</p>
+            </div>
+            <div class="finance-app" aria-label="财务速算工具">
+              <div class="finance-fields">
+                <label>
+                  <span>报价金额</span>
+                  <input id="finance-base" type="number" min="0" step="0.01" value="12800" inputmode="decimal">
+                </label>
+                <label>
+                  <span>折扣</span>
+                  <input id="finance-discount" type="number" min="0" max="100" step="0.1" value="0" inputmode="decimal">
+                </label>
+                <label>
+                  <span>税率</span>
+                  <input id="finance-tax" type="number" min="0" max="100" step="0.1" value="6" inputmode="decimal">
+                </label>
+                <label>
+                  <span>预算浮动</span>
+                  <input id="finance-range" type="number" min="0" max="100" step="0.1" value="10" inputmode="decimal">
+                </label>
+              </div>
+              <label class="finance-note">
+                <span>记录备注</span>
+                <input id="finance-note" type="text" maxlength="28" placeholder="例如：官网首页、设备采购、服务费">
+              </label>
+              <div class="finance-result" aria-live="polite">
+                <div><span>应收合计</span><strong id="finance-total">¥0.00</strong></div>
+                <div><span>金额大写</span><strong id="finance-uppercase">零元整</strong></div>
+                <div><span>预算区间</span><strong id="finance-budget">¥0.00 - ¥0.00</strong></div>
+                <div><span>折扣 / 税费</span><strong id="finance-detail">¥0.00 / ¥0.00</strong></div>
+              </div>
+              <div class="finance-actions">
+                <button class="btn" type="button" id="finance-save">记录报价</button>
+                <button class="btn secondary" type="button" id="finance-clear">清空记录</button>
+              </div>
+              <div class="finance-records" id="finance-records" aria-label="报价记录"></div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <span>© <span id="year"></span> Cong.ltd. All rights reserved.</span>
+      <span>小工具 · 二维码和财务速算</span>
+      <a class="footer-mail" href="mailto:hello@cong.ltd?subject=Cong.ltd%20%E8%81%94%E7%B3%BB">hello@cong.ltd</a>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="assets/js/script.js" defer></script>
+</body>
+</html>
