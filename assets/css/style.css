@@ -344,6 +344,7 @@ main {
 }
 
 .hero-photo {
+  margin: 0;
   height: clamp(300px, 42vw, 520px);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
