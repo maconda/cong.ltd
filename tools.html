@@ -30,19 +30,19 @@
   </div>
 
   <main id="main">
-    <section class="section shelf-section page-hero">
+    <section class="section shelf-section page-hero tools-page">
       <div class="wrap">
         <div class="section-head left reveal">
           <p class="eyebrow dark-text">Studio tools</p>
-          <h1>小工具。</h1>
-          <p class="lead">把常用的小功能单独放在这里，首页保持清爽，需要用的时候从导航进入。</p>
+          <h1>小工具</h1>
+          <p class="lead">把二维码转换、金额大小写和报价速算放在一个清爽页面，打开就能用。</p>
         </div>
         <div class="tool-grid compact">
           <article class="tool-card qr-tool reveal">
             <div class="tool-index">01</div>
             <div>
               <h3>二维码转换</h3>
-              <p>输入任意文字、链接或联系方式，生成一张可下载的二维码图片。</p>
+              <p>输入链接、文字或联系方式，生成一张可下载的二维码图片。</p>
             </div>
             <div class="qr-app" aria-label="二维码转换工具">
               <label class="qr-label" for="qr-input">转换内容</label>
@@ -60,31 +60,16 @@
             <div class="tool-index">02</div>
             <div>
               <h3>财务速算</h3>
-              <p>金额大小写转换，快速记录报价、折扣、税费和预算区间。</p>
+              <p>转换金额大写，快速记录报价、折扣、税费和预算区间。</p>
             </div>
             <div class="finance-app" aria-label="财务速算工具">
               <div class="finance-fields">
-                <label>
-                  <span>报价金额</span>
-                  <input id="finance-base" type="number" min="0" step="0.01" value="12800" inputmode="decimal">
-                </label>
-                <label>
-                  <span>折扣</span>
-                  <input id="finance-discount" type="number" min="0" max="100" step="0.1" value="0" inputmode="decimal">
-                </label>
-                <label>
-                  <span>税率</span>
-                  <input id="finance-tax" type="number" min="0" max="100" step="0.1" value="6" inputmode="decimal">
-                </label>
-                <label>
-                  <span>预算浮动</span>
-                  <input id="finance-range" type="number" min="0" max="100" step="0.1" value="10" inputmode="decimal">
-                </label>
+                <label><span>报价金额</span><input id="finance-base" type="number" min="0" step="0.01" value="12800" inputmode="decimal"></label>
+                <label><span>折扣</span><input id="finance-discount" type="number" min="0" max="100" step="0.1" value="0" inputmode="decimal"></label>
+                <label><span>税率</span><input id="finance-tax" type="number" min="0" max="100" step="0.1" value="6" inputmode="decimal"></label>
+                <label><span>预算浮动</span><input id="finance-range" type="number" min="0" max="100" step="0.1" value="10" inputmode="decimal"></label>
               </div>
-              <label class="finance-note">
-                <span>记录备注</span>
-                <input id="finance-note" type="text" maxlength="28" placeholder="例如：官网首页、设备采购、服务费">
-              </label>
+              <label class="finance-note"><span>记录备注</span><input id="finance-note" type="text" maxlength="28" placeholder="例如：官网首页、设备采购、服务费"></label>
               <div class="finance-result" aria-live="polite">
                 <div><span>应收合计</span><strong id="finance-total">¥0.00</strong></div>
                 <div><span>金额大写</span><strong id="finance-uppercase">零元整</strong></div>
