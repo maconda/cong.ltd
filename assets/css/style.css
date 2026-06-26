@@ -26,6 +26,7 @@
   --tracking-body: 0;
   --tracking-label: .08em;
   --text-caption: clamp(12px, .78vw, 13px);
+  --text-nav: clamp(15px, 1.05vw, 16px);
   --text-small: clamp(14px, .9vw, 15px);
   --text-body: clamp(16px, 1vw, 17px);
   --text-lead: clamp(18px, 1.55vw, 22px);
@@ -44,6 +45,7 @@ html {
 
 body {
   margin: 0;
+  padding-top: var(--nav-h);
   min-width: 320px;
   background:
     linear-gradient(180deg, rgba(255, 255, 255, .92) 0%, rgba(247, 247, 245, .96) 42%, var(--bg) 100%);
@@ -116,15 +118,19 @@ main {
 }
 
 .nav {
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 20;
   height: var(--nav-h);
   color: var(--ink);
-  background: rgba(255, 255, 255, .82);
-  border-bottom: 1px solid var(--line);
-  backdrop-filter: blur(18px) saturate(150%);
-  -webkit-backdrop-filter: blur(18px) saturate(150%);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .9), rgba(255, 255, 255, .68));
+  border-bottom: 1px solid rgba(31, 31, 31, .1);
+  box-shadow: 0 14px 40px rgba(31, 31, 31, .08);
+  backdrop-filter: blur(24px) saturate(170%);
+  -webkit-backdrop-filter: blur(24px) saturate(170%);
 }
 
 .nav-inner {
@@ -163,11 +169,11 @@ main {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: clamp(18px, 2.4vw, 30px);
+  gap: clamp(18px, 2vw, 28px);
   min-width: 0;
   flex: 1 1 auto;
   white-space: nowrap;
-  font-size: var(--text-caption);
+  font-size: var(--text-nav);
   line-height: 1;
   color: var(--muted);
 }
@@ -214,7 +220,7 @@ main {
   border-radius: var(--radius-pill);
   background: var(--surface);
   color: var(--ink);
-  font-size: var(--text-caption);
+  font-size: var(--text-small);
   line-height: 1;
   font-weight: 700;
   white-space: nowrap;
@@ -1402,12 +1408,18 @@ select:focus,
 }
 
 .reveal {
-  opacity: 0;
-  transform: translateY(18px);
+  opacity: 1;
+  transform: none;
   transition: opacity .7s ease, transform .7s ease;
 }
 
 .reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+.hero .reveal,
+.page-hero .reveal {
   opacity: 1;
   transform: none;
 }
@@ -1552,14 +1564,16 @@ select:focus,
 
   .hero,
   .studio-hero {
+    min-height: auto;
     padding-top: 58px;
     padding-bottom: 54px;
   }
 
   .hero h1,
   .studio-hero h1 {
-    font-size: clamp(42px, 12.5vw, 58px);
-    line-height: 1.05;
+    max-width: 100%;
+    font-size: clamp(39px, 10.8vw, 46px);
+    line-height: 1.08;
     letter-spacing: -0.024em;
   }
 

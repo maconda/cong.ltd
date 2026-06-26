@@ -37,6 +37,20 @@ $jsPath = Join-Path $root "assets/js/script.js"
 Test-FileExists -Path $cssPath
 Test-FileExists -Path $jsPath
 
+$requiredMediaFiles = @(
+    "assets/img/studio-hero.jpg",
+    "assets/img/macbook-pro-14.jpg",
+    "assets/img/ergonomic-chair.jpg",
+    "assets/img/monitor-27.jpg",
+    "assets/icons/email.png",
+    "assets/icons/telegram.png",
+    "assets/icons/wechat.png"
+)
+
+foreach ($mediaFile in $requiredMediaFiles) {
+    Test-FileExists -Path (Join-Path $root $mediaFile)
+}
+
 $emDash = [char]0x2014
 
 foreach ($page in $pages) {
@@ -57,6 +71,17 @@ foreach ($page in $pages) {
 
     if ($content.Contains($emDash)) {
         $failures += "$page contains an em dash"
+    }
+
+    $externalVisualHosts = @(
+        "images.unsplash.com",
+        "pub-fa66d36fcbec41acb00d20a64ab77dc9.r2.dev"
+    )
+
+    foreach ($visualHost in $externalVisualHosts) {
+        if ($content.Contains($visualHost)) {
+            $failures += "$page still depends on external visual host: $visualHost"
+        }
     }
 }
 
@@ -116,6 +141,26 @@ if ($null -ne $cssContent) {
         if ($cssContent -match [regex]::Escape($color)) {
             $failures += "assets/css/style.css contains banned dominant color: $color"
         }
+    }
+
+    if ($cssContent -notmatch "(?s)\.nav\s*\{[^}]*position:\s*fixed;") {
+        $failures += "assets/css/style.css must keep the top nav fixed"
+    }
+
+    if ($cssContent -notmatch "(?s)\.nav\s*\{[^}]*backdrop-filter:\s*blur\(") {
+        $failures += "assets/css/style.css must give the top nav a glass blur"
+    }
+
+    if ($cssContent -match "(?s)\.nav-links\s*\{[^}]*font-size:\s*var\(--text-caption\)") {
+        $failures += "assets/css/style.css nav links are still using caption-size text"
+    }
+
+    if ($cssContent -notmatch "(?s)@media\s*\(max-width:\s*560px\)\s*\{.*?\.hero,\s*\.studio-hero\s*\{[^}]*min-height:\s*auto;") {
+        $failures += "assets/css/style.css must remove full viewport hero height on small screens"
+    }
+
+    if ($cssContent -notmatch "(?s)@media\s*\(max-width:\s*560px\)\s*\{.*?\.hero h1,\s*\.studio-hero h1\s*\{[^}]*font-size:\s*clamp\(39px,\s*10\.8vw,\s*46px\);") {
+        $failures += "assets/css/style.css must keep mobile hero titles within a 390px viewport"
     }
 }
 
