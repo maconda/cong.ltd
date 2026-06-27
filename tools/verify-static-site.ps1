@@ -122,7 +122,7 @@ if ($null -ne $indexContent) {
     $contactDestinations = @(
         "mailto:hello@cong.ltd",
         "https://t.me/JFNemo",
-        "https://work.weixin.qq.com/?from=user_h5"
+        "https://work.weixin.qq.com/ca/cawcdeea6aa4f7439a"
     )
 
     foreach ($destination in $contactDestinations) {
@@ -161,6 +161,14 @@ if ($null -ne $cssContent) {
 
     if ($cssContent -notmatch "(?s)@media\s*\(max-width:\s*560px\)\s*\{.*?\.hero h1,\s*\.studio-hero h1\s*\{[^}]*font-size:\s*clamp\(39px,\s*10\.8vw,\s*46px\);") {
         $failures += "assets/css/style.css must keep mobile hero titles within a 390px viewport"
+    }
+
+    if ($cssContent -notmatch "(?s)\.contact-icon-mark\s*\{[^}]*width:\s*76px;[^}]*height:\s*76px;") {
+        $failures += "assets/css/style.css contact icons must use larger app-icon marks"
+    }
+
+    if ($cssContent -notmatch "(?s)\.contact-icon-mark img\s*\{[^}]*width:\s*56px;[^}]*height:\s*56px;") {
+        $failures += "assets/css/style.css contact icon artwork must fill the mark more fully"
     }
 }
 

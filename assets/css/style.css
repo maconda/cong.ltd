@@ -1066,12 +1066,12 @@ select:focus,
 }
 
 .contact-icons {
-  width: min(100%, 460px);
-  margin: 30px auto 0;
+  width: min(100%, 520px);
+  margin: 34px auto 0;
   display: flex;
   align-items: stretch;
   justify-content: center;
-  gap: 14px;
+  gap: 16px;
 }
 
 .contact-icon-link {
@@ -1079,7 +1079,7 @@ select:focus,
   flex: 1 1 0;
   display: grid;
   justify-items: center;
-  gap: 10px;
+  gap: 12px;
   color: var(--muted);
   font-size: 13px;
   line-height: 1.23;
@@ -1094,22 +1094,26 @@ select:focus,
 
 .contact-icon-mark {
   position: relative;
-  width: 58px;
-  height: 58px;
+  width: 76px;
+  height: 76px;
   display: inline-grid;
   place-items: center;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  background: var(--surface);
-  box-shadow: var(--shadow-soft);
+  border: 1px solid rgba(31, 31, 31, .08);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, .96), rgba(247, 247, 245, .82)),
+    var(--surface);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, .9),
+    0 18px 42px rgba(31, 31, 31, .12);
   overflow: hidden;
 }
 
 .contact-icon-mark img {
   position: absolute;
   inset: 50% auto auto 50%;
-  width: 28px;
-  height: 28px;
+  width: 56px;
+  height: 56px;
   object-fit: contain;
   transform: translate(-50%, -50%);
 }
@@ -1687,12 +1691,13 @@ select:focus,
   }
 
   .contact-icons {
-    width: min(100%, 360px);
+    width: min(100%, 380px);
   }
 
   .contact-icon-mark {
-    width: 54px;
-    height: 54px;
+    width: 72px;
+    height: 72px;
+    border-radius: 21px;
   }
 
   .footer-inner {
