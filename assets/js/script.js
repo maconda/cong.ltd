@@ -318,3 +318,8 @@ const initFinanceTool = () => {
 
 window.addEventListener('load', initQrTool);
 window.addEventListener('load', initFinanceTool);
+window.addEventListener('load', () => {
+  if (typeof window.initAnnualLotteryTool === 'function') {
+    window.initAnnualLotteryTool();
+  }
+});

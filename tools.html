@@ -83,6 +83,94 @@
               <div class="finance-records" id="finance-records" aria-label="报价记录"></div>
             </div>
           </article>
+          <article class="tool-card lottery-tool reveal">
+            <div class="lottery-card-head">
+              <div class="tool-index">03</div>
+              <div>
+                <h3>年会抽奖</h3>
+                <p>按员工池、奖项名额、现场开奖、结果记录的顺序完成随机抽取。</p>
+              </div>
+            </div>
+            <div class="lottery-app" aria-label="年会抽奖工具">
+              <div class="lottery-panels">
+                <section class="lottery-panel lottery-step" aria-labelledby="lottery-employee-title">
+                  <div class="lottery-panel-head">
+                    <div>
+                      <span class="lottery-step-number">步骤 1</span>
+                      <h4 id="lottery-employee-title">员工池</h4>
+                      <p>每行一人：姓名，部门可选</p>
+                    </div>
+                    <strong id="lottery-employee-count">0 人</strong>
+                  </div>
+                  <textarea id="lottery-employees" rows="5" placeholder="张三&#10;李四,技术部"></textarea>
+                  <label class="lottery-file"><span>上传员工 Excel</span><input id="lottery-employee-file" type="file" accept=".xlsx,.xls"></label>
+                  <div class="lottery-preview" id="lottery-employee-preview" aria-label="员工池预览"></div>
+                </section>
+                <section class="lottery-panel lottery-step" aria-labelledby="lottery-prize-title">
+                  <div class="lottery-panel-head">
+                    <div>
+                      <span class="lottery-step-number">步骤 2</span>
+                      <h4 id="lottery-prize-title">奖项和名额</h4>
+                      <p>每行一项：奖项，礼品和数量可选</p>
+                    </div>
+                    <div class="lottery-stat-stack">
+                      <strong id="lottery-prize-count">0 项</strong>
+                      <span id="lottery-prize-total">0 个名额</span>
+                    </div>
+                  </div>
+                  <textarea id="lottery-prizes" rows="5" placeholder="一等奖&#10;二等奖,2&#10;三等奖,按摩椅"></textarea>
+                  <div class="lottery-builder" aria-label="快速添加奖项">
+                    <label><span>奖项</span><select id="lottery-builder-level">
+                      <option value="特等奖">特等奖</option>
+                      <option value="一等奖">一等奖</option>
+                      <option value="二等奖">二等奖</option>
+                      <option value="三等奖">三等奖</option>
+                      <option value="幸运奖">幸运奖</option>
+                    </select></label>
+                    <label><span>礼品</span><input id="lottery-builder-gift" type="text" maxlength="24" placeholder="可不填，默认同奖项"></label>
+                    <label><span>中奖人数</span><select id="lottery-builder-quantity"></select></label>
+                    <button class="btn secondary" type="button" id="lottery-builder-add">加入奖项</button>
+                  </div>
+                  <label class="lottery-file"><span>上传礼品 Excel</span><input id="lottery-prize-file" type="file" accept=".xlsx,.xls"></label>
+                  <div class="lottery-preview" id="lottery-prize-preview" aria-label="礼品池预览"></div>
+                </section>
+              </div>
+              <section class="lottery-stage lottery-step" aria-labelledby="lottery-stage-title">
+                <div class="lottery-stage-top">
+                  <div>
+                    <span class="lottery-step-number">步骤 3</span>
+                    <h4 id="lottery-stage-title">现场开奖</h4>
+                  </div>
+                  <label class="lottery-round-picker"><span>当前奖项</span><select id="lottery-prize-select"></select></label>
+                </div>
+                <div class="lottery-drum" aria-live="polite">
+                  <span id="lottery-stage-prize">等待奖项</span>
+                  <strong id="lottery-stage-name">READY</strong>
+                  <em id="lottery-stage-dept">导入数据后开始</em>
+                  <div class="lottery-progress" aria-hidden="true"><i id="lottery-progress-bar"></i></div>
+                </div>
+                <div class="lottery-stage-meta">
+                  <span id="lottery-remaining-count">剩余 0 人</span>
+                  <span id="lottery-round-count">待抽 0 轮</span>
+                </div>
+              </section>
+              <div class="lottery-actions">
+                <button class="btn" type="button" id="lottery-draw">启动本轮抽奖</button>
+                <button class="btn secondary" type="button" id="lottery-reset">重置整场</button>
+                <span class="lottery-status" id="lottery-status" data-tone="neutral" aria-live="polite"></span>
+              </div>
+              <section class="lottery-results lottery-step" aria-labelledby="lottery-results-title">
+                <div class="lottery-results-head">
+                  <div>
+                    <span class="lottery-step-number">步骤 4</span>
+                    <h4 id="lottery-results-title">中奖结果</h4>
+                  </div>
+                  <span>自动按轮次归档</span>
+                </div>
+                <div class="lottery-results-list" id="lottery-results" aria-live="polite" aria-label="抽奖结果"></div>
+              </section>
+            </div>
+          </article>
         </div>
       </div>
     </section>
@@ -97,6 +185,8 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+  <script src="assets/js/annual-lottery.js" defer></script>
   <script src="assets/js/script.js" defer></script>
 </body>
 </html>
