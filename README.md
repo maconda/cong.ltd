@@ -54,5 +54,6 @@ This is a plain static site. Use these settings:
 - Build output directory: `/`，构建输出目录填写 `/`
 - Root directory: repository root，根目录使用仓库根目录
 
-The QR tool loads `qrcode-generator` from jsDelivr.
+The QR tool and Excel parsing tool are hosted locally in `assets/vendor/`.
+二维码工具和 Excel 解析工具已改为本地托管，位于 `assets/vendor/`。
 二维码工具通过 jsDelivr 加载 `qrcode-generator`。

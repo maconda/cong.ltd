@@ -1,5 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const { readFileSync } = require('node:fs');
+const { resolve } = require('node:path');
 
 const {
   parseEmployeesFromText,
@@ -11,6 +13,14 @@ const {
   drawPrizeRound,
   drawAnnualLottery
 } = require('../assets/js/annual-lottery.js');
+
+test('tools page uses locally hosted script dependencies', () => {
+  const html = readFileSync(resolve(__dirname, '..', 'tools.html'), 'utf8');
+
+  assert.match(html, /<script src="assets\/vendor\/qrcode\.min\.js"><\/script>/);
+  assert.match(html, /<script src="assets\/vendor\/xlsx\.full\.min\.js"><\/script>/);
+  assert.doesNotMatch(html, /cdn\.jsdelivr\.net/);
+});
 
 test('parses employees from manual text and removes duplicates', () => {
   const employees = parseEmployeesFromText('张三,设计部\n李四\t技术部\n张三,设计部\n,空行');
