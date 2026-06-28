@@ -31,6 +31,45 @@ navLinks.forEach((link) => link.addEventListener('click', () => {
 window.addEventListener('hashchange', setActiveNavigation);
 setActiveNavigation();
 
+const pressTargetSelector = [
+  'button',
+  '.btn',
+  '.nav-cta',
+  '.nav-links a',
+  '.mobile-menu a',
+  '.tool-card',
+  '.product-card',
+  '.card',
+  '.case-card',
+  '.studio-entry-card'
+].join(',');
+
+const formFieldSelector = 'input, textarea, select, label';
+const addGlassPress = (target) => {
+  if (!target || target.disabled || target.classList.contains('disabled')) return;
+  target.classList.remove('glass-press');
+  window.requestAnimationFrame(() => {
+    target.classList.add('glass-press');
+    window.setTimeout(() => target.classList.remove('glass-press'), 420);
+  });
+};
+
+document.addEventListener('pointerdown', (event) => {
+  const directTarget = event.target.closest('button, .btn, .nav-cta, .nav-links a, .mobile-menu a');
+  if (directTarget) {
+    addGlassPress(directTarget);
+    return;
+  }
+
+  if (event.target.closest(formFieldSelector)) return;
+  addGlassPress(event.target.closest(pressTargetSelector));
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key !== 'Enter' && event.key !== ' ') return;
+  addGlassPress(event.target.closest(pressTargetSelector));
+});
+
 const yearElement = document.getElementById('year');
 if (yearElement) yearElement.textContent = new Date().getFullYear();
 
